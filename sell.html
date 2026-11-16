@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Post a second-hand item for sale on CampusMart and reach students on campus." />
+    <title>Sell an item | CampusMart</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="index.html" class="logo">CampusMart</a>
+      <nav aria-label="Main">
+        <ul class="nav-links">
+          <li><a href="index.html">Browse</a></li>
+          <li><a href="sell.html" class="btn">Sell an item</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <h1>Sell an item</h1>
+      <p>Fill in the details below to publish your listing.</p>
+
+      <form action="/api/listings" method="post" enctype="multipart/form-data" class="sell-form">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input id="title" name="title" type="text" required minlength="5" maxlength="100" pattern="(?!\d+$).*" title="Title must be 5 to 100 characters and cannot contain only digits." placeholder="e.g. Casio fx-991EX Calculator" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+              <option value="">Select a category</option>
+              <option value="books">Books</option>
+              <option value="electronics">Electronics</option>
+              <option value="furniture">Furniture</option>
+              <option value="clothing">Clothing</option>
+              <option value="stationery">Stationery</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="price">Price (Rs)</label>
+            <input id="price" name="price" type="number" required min="50" step="1" placeholder="e.g. 1500" />
+          </div>
+        </div>
+
+        <fieldset>
+          <legend>Condition</legend>
+          <label class="option"><input type="radio" name="condition" value="NEW" required /> New</label>
+          <label class="option"><input type="radio" name="condition" value="LIKE_NEW" /> Like new</label>
+          <label class="option"><input type="radio" name="condition" value="GOOD" /> Good</label>
+          <label class="option"><input type="radio" name="condition" value="FAIR" /> Fair</label>
+        </fieldset>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" rows="5" required minlength="20" placeholder="Describe the item, its condition and anything the buyer should know."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="photo">Photo</label>
+          <input id="photo" name="photo" type="file" accept="image/*" />
+        </div>
+
+        <div class="form-group">
+          <label class="option"><input type="checkbox" name="confirm" value="yes" required /> I confirm this item is mine to sell</label>
+        </div>
+
+        <button type="submit" class="btn">Publish listing</button>
+      </form>
+
+      <section aria-labelledby="fees-heading">
+        <h2 id="fees-heading">Selling fees</h2>
+        <table>
+          <caption>Fees for publishing a listing</caption>
+          <thead>
+            <tr>
+              <th scope="col">Listing type</th>
+              <th scope="col">Fee</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Standard listing</td>
+              <td>Free</td>
+            </tr>
+            <tr>
+              <td>Featured listing</td>
+              <td>Rs 500</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="safety-heading">
+        <h2 id="safety-heading">Frequently asked questions</h2>
+        <details>
+          <summary>Safety tips for meeting buyers</summary>
+          <ol>
+            <li>Meet in a public place on campus during the day.</li>
+            <li>Bring a friend if possible.</li>
+            <li>Check the item before you accept payment.</li>
+          </ol>
+        </details>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>&copy; 2026 CampusMart &middot; <a href="mailto:help@campusmart.pk">help@campusmart.pk</a></p>
+    </footer>
+  </body>
+</html>
